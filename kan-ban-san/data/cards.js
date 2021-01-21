@@ -2,7 +2,7 @@ const columns = [
     {
         id: 1,
         columnId: 1,
-        name: 'Name of the task',
+        name: 'task name',
         color: '#ffc8dd',
         task: 'walk the dog',
         owner: 'martin',
@@ -10,7 +10,7 @@ const columns = [
     {
         id: 2,
         columnId: 1,
-        name: 'Name of the task',
+        name: 'task name',
         color: '#ffc8dd',
         task: 'walk the dog',
         owner: 'mar',
@@ -26,7 +26,7 @@ const columns = [
     {
         id: 4,
         columnId: 2,
-        name: 'Name of the task',
+        name: 'task name',
         color: '#bde0fe',
         task: 'walk the dog',
         owner: 'dogoo',
@@ -34,7 +34,7 @@ const columns = [
     {
         id: 5,
         columnId: 4,
-        name: 'Name of the task',
+        name: 'task name',
         color: '#ffc8dd',
         task: 'walk the dog',
         owner: 'stakkato',
@@ -42,7 +42,7 @@ const columns = [
     {
         id: 6,
         columnId: 4,
-        name: 'Name of the task',
+        name: 'task name',
         color: '#a2a2ff',
         task: 'walk the dog',
         owner: 'acordeon',

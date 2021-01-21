@@ -7,7 +7,7 @@ import Column from './Column';
 import columns from '../../data/columns';
 
 export default function Board() {
-    const displayColumns = columns.map((col) => {
+    const renderColumns = columns.map((col) => {
         const { id } = col;
         return <Column key={id} data={col} />;
     });
@@ -16,7 +16,7 @@ export default function Board() {
         <article className="board-container container" style={boardStyle}>
             <h1>Kan Ban San</h1>
             <Form style={{ border: '1px solid green' }} />
-            <section style={{ display: 'flex' }}>{displayColumns}</section>
+            <section style={{ display: 'flex' }}>{renderColumns}</section>
         </article>
     );
 }

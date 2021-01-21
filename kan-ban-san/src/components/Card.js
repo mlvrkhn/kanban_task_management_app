@@ -13,12 +13,13 @@ export default function Card(props) {
         backgroundColor: `${color}`,
         display: 'inline-block',
         padding: '3px',
+        margin: '4px',
     };
 
     return (
         <div style={cardStyle} key={id}>
-            <h1>{name}</h1>
-            <h2>{owner}</h2>
+            <h3>{name}</h3>
+            <h4>{owner}</h4>
             <p>{task}</p>
         </div>
     );
