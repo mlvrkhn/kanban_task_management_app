@@ -1,15 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import Board from './components/Board';
 
-function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+export default function App() {
+    return <Board />;
 }
 
-export default App;
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root'),
+);
