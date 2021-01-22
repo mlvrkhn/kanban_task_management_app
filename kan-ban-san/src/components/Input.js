@@ -1,17 +1,19 @@
+/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-export default function Input({ name, required, handleChange, placeholder, inputs }) {
-    console.log(name);
+export default function Input(props) {
+    const { name, required, changeHandler, placeholder, inputValue } = props;
+
     return (
         <input
             name={name}
             required={required}
             placeholder={placeholder}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={(e) => changeHandler(e.target)}
             style={inputStyle}
-            value="{inputs[name]}"
+            value={inputValue[name]}
         />
     );
 }

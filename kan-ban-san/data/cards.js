@@ -1,4 +1,4 @@
-const columns = [
+const cards = [
     {
         id: 1,
         columnId: 1,
@@ -49,4 +49,4 @@ const columns = [
     },
 ];
 
-export default columns;
+export default cards;

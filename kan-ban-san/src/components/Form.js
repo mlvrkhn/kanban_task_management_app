@@ -1,28 +1,34 @@
+/* eslint-disable default-case */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
+// import { useLocalStorage } from '../hooks';
 
 export default function Form() {
-    const initialInputs = inputFields.map((field) => {
-        const initialState = {};
-        const { name } = field;
+    const initialInputValues = () => {
+        const initValues = {};
 
-        if (!inputs) {
-            initialState[name] = '';
-        } else {
-            initialState[name] = inputs[name];
-        }
-        console.log(initialState);
-        return initialState;
-    });
-    const [inputs, setInput] = useState(initialInputs);
+        inputFields.forEach(({ name, value }) => {
+            initValues[name] = value;
+        });
+        return initValues;
+    };
+
+    const [inputValue, setInputValue] = useState(initialInputValues);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(inputValue);
     };
-    const changeHandler = (name, value) => setInput({ ...inputs, name: value });
+
+    const changeHandler = ({ name, value }) => {
+        setInputValue({
+            ...inputValue,
+            [name]: value,
+        });
+    };
 
     const renderInputFields = () => {
         return inputFields.map((input) => {
@@ -31,10 +37,10 @@ export default function Form() {
                 <Input
                     name={name}
                     key={name}
-                    handleChange={changeHandler}
+                    changeHandler={changeHandler}
                     placeholder={placeholder}
                     required={required}
-                    inputs={inputs[name]}
+                    inputValue={inputValue}
                 />
             );
         });

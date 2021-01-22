@@ -1,4 +1,4 @@
-const cards = [
+const columns = [
     {
         title: 'Pending',
         id: 1,
@@ -21,4 +21,4 @@ const cards = [
     },
 ];
 
-export default cards;
+export default columns;

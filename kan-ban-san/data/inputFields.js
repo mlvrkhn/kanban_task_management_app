@@ -1,18 +1,21 @@
 const inputFields = [
     {
-        name: 'task-name',
+        name: 'taskName',
         required: true,
         placeholder: 'Name',
+        value: '',
     },
     {
-        name: 'task-owner',
+        name: 'taskOwner',
         required: true,
         placeholder: 'Owner',
+        value: '',
     },
     {
-        name: 'task-description',
+        name: 'taskDescription',
         required: true,
         placeholder: 'Description',
+        value: '',
     },
 ];
 
