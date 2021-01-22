@@ -25,6 +25,7 @@ const boardStyle = {
     backgroundColor: 'mistyrose',
     width: '700px',
     height: '700px',
-    border: '3px solid black',
+    border: '1px solid black',
     margin: '10px',
+    padding: '20px',
 };
