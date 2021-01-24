@@ -15,17 +15,15 @@ export default function Column(props) {
     } = props;
 
     function renderCards() {
+        const { Consumer: CardConsumer } = CardContext;
         return (
-            <CardContext.Consumer>
-                {(cards) => {
-                    return cards.map((card) => {
-                        if (card.columnId === id) {
-                            console.log('filtered', card.columnId);
-                            return <Card key={card.id} data={card} />;
-                        }
-                    });
+            <CardConsumer>
+                {(context) => {
+                    return context
+                        .filter((card) => card.columnId === id)
+                        .map((card) => <Card key={card.id} data={card} />);
                 }}
-            </CardContext.Consumer>
+            </CardConsumer>
         );
     }
 

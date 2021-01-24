@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable default-case */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
-// import { useLocalStorage } from '../hooks';
 
-export default function Form() {
+export default function Form(props) {
+    const { setCards } = props;
     const initialInputValues = () => {
         const initValues = {};
 
@@ -18,9 +19,22 @@ export default function Form() {
 
     const [inputValue, setInputValue] = useState(initialInputValues);
 
+    const createCardObject = () => {
+        return {
+            name: inputValue.taskName,
+            task: inputValue.taskDescription,
+            owner: inputValue.taskOwner,
+            columnId: 1,
+            color: '#ffc8dd',
+        };
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(inputValue);
+        const newCard = createCardObject();
+        setCards((prev) => {
+            return [...prev, newCard];
+        });
     };
 
     const changeHandler = ({ name, value }) => {

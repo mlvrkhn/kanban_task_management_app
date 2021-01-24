@@ -1,18 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Board from './components/Board';
 import CardContext from './context/context';
 import useLocalStorage from './hooks';
 
 export default function App() {
-    const [getItem, setItem] = useLocalStorage('name');
-    const cards = [
+    const [storage, setStorage] = useLocalStorage('cards');
+    const [cards, setCards] = useState(storage);
+
+    const kartki = [
         {
             id: 1,
             columnId: 1,
-            name: 'task name',
+            name: 'testiwssso',
             color: '#ffc8dd',
             task: 'walk the dog',
             owner: 'martin',
@@ -20,16 +22,20 @@ export default function App() {
         {
             id: 2,
             columnId: 1,
-            name: 'task name',
+            name: 'testiwo 2',
             color: '#ffc8dd',
             task: 'walk the dog',
             owner: 'mar',
         },
     ];
 
+    useEffect(() => {
+        setStorage(cards);
+    }, [cards]);
+
     return (
         <CardContext.Provider value={cards}>
-            <Board />;
+            <Board setCards={setCards} />
         </CardContext.Provider>
     );
 }
@@ -40,9 +46,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root'),
 );
-
-//  {
-//         title: 'Pending',
-//         id: 1,
-//         cardLimit: 6,
-//  },

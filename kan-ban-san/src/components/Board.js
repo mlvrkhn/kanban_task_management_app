@@ -1,21 +1,24 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-use-before-define */
 import React from 'react';
-// import { v4 as uuid } from 'uuid';
 import Form from './Form';
 import Column from './Column';
 import columns from '../../data/columns';
 
-export default function Board() {
+export default function Board(props) {
     const renderColumns = columns.map((col) => {
         const { id } = col;
         return <Column key={id} data={col} />;
     });
 
+    const { setCards } = props;
+
     return (
         <article className="board-container container" style={boardStyle}>
             <h1>Kan Ban San</h1>
-            <Form style={{ border: '1px solid green' }} />
+            <Form setCards={setCards} style={{ border: '1px solid green' }} />
             <section style={{ display: 'flex' }}>{renderColumns}</section>
         </article>
     );

@@ -3,32 +3,30 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const useLocalStorage = (name) => {
-    const init = {};
-
-    const [val, useVal] = useState(init);
-
-    function getItem() {
-        if (localStorage.getItem(name)) {
-            return localStorage.getItem(name);
+function useLocalStorage(key, initialValue = '') {
+    const [storedValue, setStoredValue] = useState(() => {
+        try {
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : initialValue;
+        } catch (error) {
+            return initialValue;
         }
-    }
-    function setItem() {
-        console.log('setting item...');
-    }
+    });
 
-    // function localStorageTest() {
-    //     const test = new Date().valueOf();
-    //     try {
-    //         localStorage.setItem(test, test);
-    //         localStorage.removeItem(test);
-    //         return true;
-    //     } catch (e) {
-    //         return false;
-    //     }
-    // }
-    return [getItem, setItem];
-};
+    const setValue = (cardToSave) => {
+        console.log('cardToSave', cardToSave);
+        try {
+            const valueToStore = cardToSave;
+            setStoredValue(valueToStore);
+            localStorage.setItem(key, JSON.stringify(valueToStore));
+        } catch (error) {
+            console.log('Value not saved!');
+        }
+    };
+
+    return [storedValue, setValue];
+}
+
 export default useLocalStorage;
