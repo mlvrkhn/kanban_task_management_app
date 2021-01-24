@@ -10,25 +10,6 @@ export default function App() {
     const [storage, setStorage] = useLocalStorage('cards');
     const [cards, setCards] = useState(storage);
 
-    const kartki = [
-        {
-            id: 1,
-            columnId: 1,
-            name: 'testiwssso',
-            color: '#ffc8dd',
-            task: 'walk the dog',
-            owner: 'martin',
-        },
-        {
-            id: 2,
-            columnId: 1,
-            name: 'testiwo 2',
-            color: '#ffc8dd',
-            task: 'walk the dog',
-            owner: 'mar',
-        },
-    ];
-
     useEffect(() => {
         setStorage(cards);
     }, [cards]);

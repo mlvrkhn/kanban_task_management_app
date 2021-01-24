@@ -14,6 +14,7 @@ export default function Card(props) {
         display: 'inline-block',
         padding: '3px',
         margin: '4px',
+        lineHeight: '0.4',
     };
 
     return (
@@ -21,6 +22,8 @@ export default function Card(props) {
             <h3>{name}</h3>
             <h4>{owner}</h4>
             <p>{task}</p>
+            <button onClick={(e) => console.log(id)}>left</button>
+            <button onClick={() => console.log('click')}>right</button>
         </div>
     );
 }
