@@ -8,9 +8,9 @@ import Column from './Column';
 import columns from '../../data/columns';
 
 export default function Board(props) {
-    const renderColumns = columns.map((col) => <Column key={col.id} data={col} />);
-
     const { setCards } = props;
+
+    const renderColumns = columns.map((col) => <Column key={col.id} data={col} setCards={setCards} />);
 
     return (
         <article className="board-container container" style={boardStyle}>

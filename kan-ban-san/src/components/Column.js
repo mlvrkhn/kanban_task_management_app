@@ -10,6 +10,7 @@ import { CardContext } from '../context';
 export default function Column(props) {
     const {
         data: { title, id },
+        setCards,
     } = props;
 
     function renderCards() {
@@ -20,7 +21,7 @@ export default function Column(props) {
                     if (Object.keys(context).length !== 0) {
                         return context
                             .filter((card) => card.columnId === id)
-                            .map((card) => <Card key={card.id} data={card} />);
+                            .map((card) => <Card setCards={setCards} key={card.id} data={card} />);
                     }
                 }}
             </CardConsumer>

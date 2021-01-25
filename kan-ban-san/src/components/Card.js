@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
-import React from 'react';
-// import { MoveTaskContext } from '../context';
+import React, { useEffect } from 'react';
 import useMoveTask from '../hooks/moveTaskHook';
 
 export default function Card(props) {
@@ -9,7 +8,11 @@ export default function Card(props) {
         data: { task, name, id, color, owner },
     } = props;
 
-    const [moveTask] = useMoveTask({});
+    const [moveTask, currCards] = useMoveTask({});
+
+    useEffect(() => {
+        console.log('sss');
+    }, [currCards]);
 
     const cardStyle = {
         width: '120px',

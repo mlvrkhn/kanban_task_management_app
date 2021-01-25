@@ -6,10 +6,8 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
-// import useLocalStorage from '../hooks/localStorageHook';
 
 export default function Form(props) {
-    // const [cards] = useLocalStorage('cards');
     const { setCards } = props;
     const initialInputValues = () => {
         const initValues = {};

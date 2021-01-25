@@ -1,17 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
-// import React from 'react';
-// import cards from '../../data/cards';
+
 import columns from '../../data/columns';
 import useLocalStorage from './localStorageHook';
 
 const useMoveTask = () => {
-    const [currCards, setCurrCards] = useLocalStorage('cards');
+    const [currCards, setCurrCards] = useLocalStorage('cards', []);
 
     const moveTask = (id, action) => {
         const [cardToMove] = currCards.filter((c) => c.id === id);
-
         const countTheCards = (colId) => {
             let cardsInColumn = 0;
             currCards.forEach((card) => {
@@ -58,7 +56,11 @@ const useMoveTask = () => {
         const notFull = checkIfNotFull();
 
         if (notFull && notEdge) {
-            // update the state here
+            console.log('conditions meet');
+            if (action === 'MOVE_RIGHT') {
+                cardToMove.columnId += 1;
+                setCurrCards([...currCards]);
+            }
         }
     };
 
