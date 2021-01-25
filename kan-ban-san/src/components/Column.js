@@ -4,10 +4,8 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import { v4 as uuid } from 'uuid';
-import cards from '../../data/cards';
 import Card from './Card';
-import CardContext from '../context/context';
+import { CardContext } from '../context';
 
 export default function Column(props) {
     const {
@@ -19,9 +17,11 @@ export default function Column(props) {
         return (
             <CardConsumer>
                 {(context) => {
-                    return context
-                        .filter((card) => card.columnId === id)
-                        .map((card) => <Card key={card.id} data={card} />);
+                    if (Object.keys(context).length !== 0) {
+                        return context
+                            .filter((card) => card.columnId === id)
+                            .map((card) => <Card key={card.id} data={card} />);
+                    }
                 }}
             </CardConsumer>
         );
@@ -37,7 +37,6 @@ export default function Column(props) {
 
 const columnStyle = {
     backgroundColor: `#f7f7e8`,
-    // border: '1px solid red',
     height: '500px',
     width: '100%',
     margin: '0 2px',

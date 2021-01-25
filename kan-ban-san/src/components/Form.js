@@ -3,12 +3,13 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
-import useLocalStorage from '../hooks';
+// import useLocalStorage from '../hooks/localStorageHook';
 
 export default function Form(props) {
-    const [cards] = useLocalStorage('cards');
+    // const [cards] = useLocalStorage('cards');
     const { setCards } = props;
     const initialInputValues = () => {
         const initValues = {};
@@ -23,14 +24,9 @@ export default function Form(props) {
 
     const createCardObject = () => {
         const getLastID = () => {
-            console.log('last id', cards);
-            if (cards.length === 0) {
-                console.log('kurs');
-                return 1;
-            }
-            console.log('dlugosc kart', cards.length);
-            return cards.length + 1; // nie dziala bo dostaje zawsze domyslna wartosc czyli dwa, dopiero po odswiezeniu wiecej. jak dostac tutaj ostatnią wartość?
+            return uuid();
         };
+
         return {
             name: inputValue.taskName,
             task: inputValue.taskDescription,
@@ -44,9 +40,8 @@ export default function Form(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newCard = createCardObject();
-        console.log('🚀 ~ handleSubmit ~ newCard', newCard);
-        setCards((prev) => {
-            return [...prev, newCard];
+        setCards((currCards) => {
+            return [...currCards, newCard];
         });
     };
 

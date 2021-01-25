@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
 import React from 'react';
+// import { MoveTaskContext } from '../context';
+import useMoveTask from '../hooks/moveTaskHook';
 
 export default function Card(props) {
     const {
         data: { task, name, id, color, owner },
     } = props;
+
+    const [moveTask] = useMoveTask({});
 
     const cardStyle = {
         width: '120px',
@@ -16,14 +20,17 @@ export default function Card(props) {
         margin: '4px',
         lineHeight: '0.4',
     };
-
     return (
         <div style={cardStyle} key={id}>
             <h3>{name}</h3>
             <h4>{owner}</h4>
             <p>{task}</p>
-            <button onClick={(e) => console.log(id)}>left</button>
-            <button onClick={() => console.log('click')}>right</button>
+            <button type="button" onClick={() => moveTask(id, 'MOVE_LEFT')}>
+                left
+            </button>
+            <button type="button" onClick={() => moveTask(id, 'MOVE_RIGHT')}>
+                right
+            </button>
         </div>
     );
 }

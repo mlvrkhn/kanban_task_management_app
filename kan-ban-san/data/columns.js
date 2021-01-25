@@ -3,11 +3,12 @@ const columns = [
         title: 'Pending',
         id: 1,
         cardLimit: 6,
+        isEdgeColumn: true,
     },
     {
         title: 'In progress',
         id: 2,
-        cardLimit: 4,
+        cardLimit: 2,
     },
     {
         title: 'Testing',
@@ -18,6 +19,7 @@ const columns = [
         title: 'Done',
         id: 4,
         cardLimit: 6,
+        isEdgeColumn: true,
     },
 ];
 

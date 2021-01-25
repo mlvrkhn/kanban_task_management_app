@@ -8,10 +8,7 @@ import Column from './Column';
 import columns from '../../data/columns';
 
 export default function Board(props) {
-    const renderColumns = columns.map((col) => {
-        const { id } = col;
-        return <Column key={id} data={col} />;
-    });
+    const renderColumns = columns.map((col) => <Column key={col.id} data={col} />);
 
     const { setCards } = props;
 
