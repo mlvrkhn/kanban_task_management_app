@@ -18,7 +18,9 @@ export default function Input(props) {
     );
 }
 const inputStyle = {
-    margin: '5px',
+    width: '45vw',
+    height: '30px',
+    fontSize: '20px',
 };
 
 // add label for input

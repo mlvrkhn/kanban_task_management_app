@@ -7,25 +7,25 @@ import Form from './Form';
 import Column from './Column';
 import columns from '../../data/columns';
 
-export default function Board(props) {
-    const { setCards } = props;
-
-    const renderColumns = columns.map((col) => <Column key={col.id} data={col} setCards={setCards} />);
+export default function Board() {
+    const renderColumns = columns.map((col) => <Column key={col.id} data={col} />);
 
     return (
         <article className="board-container container" style={boardStyle}>
-            <h1>Kan Ban San</h1>
-            <Form setCards={setCards} style={{ border: '1px solid green' }} />
+            <h1 style={headerStyle}>Kan Ban App</h1>
+            <h5 style={headerStyle}>Add New Card</h5>
+            <Form />
             <section style={{ display: 'flex' }}>{renderColumns}</section>
         </article>
     );
 }
 
+const headerStyle = {
+    color: '#fff',
+};
 const boardStyle = {
-    backgroundColor: 'mistyrose',
+    backgroundColor: '#404e4d',
     width: '700px',
-    height: '700px',
-    border: '1px solid black',
-    margin: '10px',
+    minHeight: '500px',
     padding: '20px',
 };

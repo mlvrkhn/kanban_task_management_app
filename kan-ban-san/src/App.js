@@ -6,24 +6,19 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Board from './components/Board';
 import { CardContext, MoveTaskContext } from './context';
-import useLocalStorage from './hooks/localStorageHook';
+import useLocalStorage from './hooks/useLocalStorage';
 
 export default function App() {
-    const [storage, setStorage] = useLocalStorage('cards');
-    const [cards, setCards] = useState(storage);
-
+    const [cards, setCards] = useLocalStorage('cards');
     useEffect(() => {
-        setStorage(cards);
+        setCards(cards);
     }, [cards]);
-    // useEffect(() => {
-    //     setCards(storage);
-    // }, [storage]);
 
     return (
         <CardContext.Provider value={cards}>
-            {/* <MoveTaskContext.Provider value={setCards}> */}
-            <Board />
-            {/* </MoveTaskContext.Provider> */}
+            <MoveTaskContext.Provider value={setCards}>
+                <Board />
+            </MoveTaskContext.Provider>
         </CardContext.Provider>
     );
 }

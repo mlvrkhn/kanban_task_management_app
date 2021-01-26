@@ -1,17 +1,19 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
 /* eslint-disable default-case */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
+import MoveTaskContext from '../context/moveTaskContext';
 
-export default function Form(props) {
-    const { setCards } = props;
+export default function Form() {
+    const setCards = useContext(MoveTaskContext);
+
     const initialInputValues = () => {
         const initValues = {};
-
         inputFields.forEach(({ name, value }) => {
             initValues[name] = value;
         });
@@ -38,6 +40,7 @@ export default function Form(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newCard = createCardObject();
+
         setCards((currCards) => {
             return [...currCards, newCard];
         });
@@ -67,12 +70,18 @@ export default function Form(props) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="form-container">
-            <h2>Add Card</h2>
-            {renderInputFields()}
-            <button type="submit" className="form-submit-button button">
+        <form onSubmit={handleSubmit} className="form-container" style={formStyle}>
+            <section>{renderInputFields()}</section>
+            <button type="submit" style={submitBtnStyle} className="form-submit-button button">
                 Submit
             </button>
         </form>
     );
 }
+const submitBtnStyle = {
+    width: '100%',
+    height: '108px',
+};
+const formStyle = {
+    display: 'flex',
+};

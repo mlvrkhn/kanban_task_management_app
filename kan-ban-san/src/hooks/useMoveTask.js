@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
-
+import { useContext } from 'react';
 import columns from '../../data/columns';
-import useLocalStorage from './useLocalStorage';
+import { CardContext, MoveTaskContext } from '../context';
 
 const useMoveTask = () => {
-    const [currCards, setCurrCards] = useLocalStorage('cards', []);
+    const cards = useContext(CardContext);
+    const setCards = useContext(MoveTaskContext);
 
     const moveTask = (id, action) => {
-        const [cardToMove] = currCards.filter((c) => c.id === id);
-        const countTheCards = (colId) => {
+        const [cardToMove] = cards.filter((c) => c.id === id);
+        const countCardsInColumn = (colId) => {
             let cardsInColumn = 0;
-            currCards.forEach((card) => {
+            cards.forEach((card) => {
                 if (card.columnId === colId) {
                     cardsInColumn += 1;
                 }
@@ -38,14 +39,14 @@ const useMoveTask = () => {
             if (action === 'MOVE_RIGHT') {
                 const nextColumnLimit = columns[cardToMove.columnId].cardLimit;
                 const nextColumnId = columns[cardToMove.columnId].id;
-                if (countTheCards(nextColumnId) < nextColumnLimit) {
+                if (countCardsInColumn(nextColumnId) < nextColumnLimit) {
                     return true;
                 }
             }
             if (action === 'MOVE_LEFT') {
                 const prevColumnLimit = columns[cardToMove.columnId - 2].cardLimit;
                 const prevColumnId = columns[cardToMove.columnId - 2].id;
-                if (countTheCards(prevColumnId) < prevColumnLimit) {
+                if (countCardsInColumn(prevColumnId) < prevColumnLimit) {
                     return true;
                 }
             }
@@ -56,14 +57,17 @@ const useMoveTask = () => {
         const notFull = checkIfNotFull();
 
         if (notFull && notEdge) {
-            console.log('conditions meet');
             if (action === 'MOVE_RIGHT') {
                 cardToMove.columnId += 1;
-                setCurrCards([...currCards]);
+                setCards([...cards]); // to wdaje mi sie zbyt proste
+            }
+            if (action === 'MOVE_LEFT') {
+                cardToMove.columnId -= 1;
+                setCards([...cards]);
             }
         }
     };
 
-    return [moveTask, currCards, setCurrCards];
+    return [moveTask, cards, setCards];
 };
 export default useMoveTask;
