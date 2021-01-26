@@ -18,7 +18,7 @@ export default function Input(props) {
     );
 }
 const inputStyle = {
-    width: '45vw',
+    width: '100%',
     height: '30px',
     fontSize: '20px',
 };

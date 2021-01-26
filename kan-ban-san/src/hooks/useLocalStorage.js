@@ -2,8 +2,8 @@
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
-
-import React, { useState } from 'react';
+import { useState } from 'react';
+import columns from '../../data/columns';
 
 const useLocalStorage = (key, initialValue = []) => {
     const [storedValue, setStoredValue] = useState(() => {
@@ -16,11 +16,25 @@ const useLocalStorage = (key, initialValue = []) => {
         }
     });
 
-    const setValue = (cardToSave) => {
+    const countCardsInColumn = (colId) => {
+        let cardsInColumn = 0;
+        storedValue.forEach((card) => {
+            if (card.columnId === colId) {
+                cardsInColumn += 1;
+            }
+        });
+        return cardsInColumn;
+    };
+
+    const setValue = (cardsToSave) => {
         try {
-            const valueToStore = cardToSave;
-            setStoredValue(valueToStore);
-            localStorage.setItem(key, JSON.stringify(valueToStore));
+            const totalCards = countCardsInColumn(1);
+            if (columns[0].cardLimit >= totalCards + 1) {
+                setStoredValue(cardsToSave);
+                localStorage.setItem(key, JSON.stringify(cardsToSave));
+            } else {
+                console.log('column full');
+            }
         } catch (error) {
             console.error(error);
         }

@@ -32,17 +32,25 @@ export default function Column(props) {
     const columnStyle = {
         backgroundColor: color,
         width: '100%',
-        margin: '0 6px',
-        marginTop: '10px',
+        minHeight: '400px',
+        margin: '5px',
+        marginTop: '20px',
         textAlign: 'center',
         borderRadius: '5px',
+        alignItems: 'center',
     };
 
     return (
         <div className="column-container container" style={columnStyle}>
-            <h1>{title}</h1>
+            <h1 style={columnTitleStyle}>{title}</h1>
             <p>Limit: {cardLimit}</p>
             {renderCards()}
         </div>
     );
 }
+
+const columnTitleStyle = {
+    fontSize: '30px',
+    borderBottom: '4px solid black',
+    alignItems: 'center',
+};

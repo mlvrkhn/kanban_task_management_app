@@ -13,7 +13,7 @@ export default function Board() {
     return (
         <article className="board-container container" style={boardStyle}>
             <h1 style={headerStyle}>Kan Ban App</h1>
-            <h5 style={headerStyle}>Add New Card</h5>
+            <h5 style={addCardStyle}>Add New Card</h5>
             <Form />
             <section style={{ display: 'flex' }}>{renderColumns}</section>
         </article>
@@ -21,11 +21,17 @@ export default function Board() {
 }
 
 const headerStyle = {
-    color: '#fff',
+    color: '#fb6376',
+    fontSize: '35px',
 };
 const boardStyle = {
     backgroundColor: '#404e4d',
     width: '700px',
     minHeight: '500px',
     padding: '20px',
+    borderRadius: '3px',
+};
+const addCardStyle = {
+    fontSize: '20px',
+    color: '#fb6376',
 };

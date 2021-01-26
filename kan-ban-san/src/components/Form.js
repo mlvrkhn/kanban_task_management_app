@@ -81,6 +81,11 @@ export default function Form() {
 const submitBtnStyle = {
     width: '100%',
     height: '108px',
+    backgroundColor: '#fb6376',
+    fontSize: '25px',
+    borderRadius: '3px',
+    border: 'none',
+    marginLeft: '10px',
 };
 const formStyle = {
     display: 'flex',

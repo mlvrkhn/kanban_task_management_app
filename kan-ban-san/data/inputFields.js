@@ -2,19 +2,19 @@ const inputFields = [
     {
         name: 'taskName',
         required: true,
-        placeholder: 'Name',
+        placeholder: 'Card title',
         value: '',
     },
     {
         name: 'taskOwner',
         required: true,
-        placeholder: 'Owner',
+        placeholder: 'Person responsible',
         value: '',
     },
     {
         name: 'taskDescription',
         required: true,
-        placeholder: 'Description',
+        placeholder: 'Task description',
         value: '',
     },
 ];
