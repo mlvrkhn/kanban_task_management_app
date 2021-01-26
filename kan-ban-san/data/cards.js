@@ -37,7 +37,7 @@ const cards = [
         name: 'task name',
         color: '#ffc8dd',
         task: 'walk the dog',
-        owner: 'stakkato',
+        owner: 'owner',
     },
     {
         id: 6,
@@ -45,7 +45,7 @@ const cards = [
         name: 'task name',
         color: '#a2a2ff',
         task: 'walk the dog',
-        owner: 'acordeon',
+        owner: 'cat',
     },
 ];
 

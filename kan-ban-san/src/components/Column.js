@@ -1,11 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable consistent-return */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 import { CardContext } from '../context';
 
@@ -39,6 +36,13 @@ export default function Column(props) {
         borderRadius: '5px',
         alignItems: 'center',
     };
+    const columnTitleStyle = {
+        fontSize: '30px',
+        borderBottom: '4px solid black',
+        alignItems: 'center',
+        padding: '10px',
+        lineHeight: '40px',
+    };
 
     return (
         <div className="column-container container" style={columnStyle}>
@@ -49,8 +53,12 @@ export default function Column(props) {
     );
 }
 
-const columnTitleStyle = {
-    fontSize: '30px',
-    borderBottom: '4px solid black',
-    alignItems: 'center',
+Column.propTypes = {
+    data: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        cardLimit: PropTypes.number.isRequired,
+        color: PropTypes.string.isRequired,
+        isEdgeColumn: PropTypes.bool.isRequired,
+    }),
 };

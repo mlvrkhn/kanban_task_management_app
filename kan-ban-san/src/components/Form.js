@@ -1,8 +1,5 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable react/prop-types */
-/* eslint-disable default-case */
 /* eslint-disable arrow-body-style */
-/* eslint-disable no-console */
 import React, { useState, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Input from './Input';
@@ -79,13 +76,13 @@ export default function Form() {
     );
 }
 const submitBtnStyle = {
-    width: '100%',
+    width: '200px',
     height: '108px',
     backgroundColor: '#fb6376',
     fontSize: '25px',
     borderRadius: '3px',
     border: 'none',
-    marginLeft: '10px',
+    margin: '0 10px',
 };
 const formStyle = {
     display: 'flex',

@@ -11,12 +11,14 @@ const columns = [
         id: 2,
         cardLimit: 2,
         color: '#e8e8e4',
+        isEdgeColumn: false,
     },
     {
         title: 'Testing',
         id: 3,
         cardLimit: 2,
         color: '#fae1dd',
+        isEdgeColumn: false,
     },
     {
         title: 'Done',

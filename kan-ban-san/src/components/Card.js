@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-use-before-define */
 import React from 'react';
+import PropTypes from 'prop-types';
 import useMoveTask from '../hooks/useMoveTask';
 
 export default function Card(props) {
@@ -19,18 +20,34 @@ export default function Card(props) {
         margin: '4px',
         lineHeight: '0.4',
         borderRadius: '3px',
+        fontSize: '12px',
+    };
+    const btnStyle = {
+        margin: '0 2px',
+        borderRadius: '3px',
+        backgroundColor: '#404e4d',
+        fontSize: '12px',
+        border: 'none',
     };
     return (
         <div style={cardStyle} key={id}>
             <h3>{name}</h3>
             <h4>{owner}</h4>
             <p>{task}</p>
-            <button type="button" onClick={() => moveTask(id, 'MOVE_LEFT')}>
-                left
+            <button style={btnStyle} type="button" onClick={() => moveTask(id, 'MOVE_LEFT')}>
+                👈
             </button>
-            <button type="button" onClick={() => moveTask(id, 'MOVE_RIGHT')}>
-                right
+            <button style={btnStyle} type="button" onClick={() => moveTask(id, 'MOVE_RIGHT')}>
+                👉
             </button>
         </div>
     );
 }
+Card.propTypes = {
+    data: PropTypes.shape({
+        task: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        owner: PropTypes.string.isRequired,
+    }),
+};

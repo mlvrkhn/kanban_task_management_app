@@ -1,8 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable default-case */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Board from './components/Board';
 import { CardContext, MoveTaskContext } from './context';
