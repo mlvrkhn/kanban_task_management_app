@@ -3,7 +3,7 @@
 /* eslint-disable no-shadow */
 
 import columns from '../../data/columns';
-import useLocalStorage from './localStorageHook';
+import useLocalStorage from './useLocalStorage';
 
 const useMoveTask = () => {
     const [currCards, setCurrCards] = useLocalStorage('cards', []);

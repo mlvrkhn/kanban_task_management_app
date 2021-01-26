@@ -1,4 +1,4 @@
-import MoveTaskContext from './MoveTaskContext';
-import CardContext from './CardContext';
+import MoveTaskContext from './moveTaskContext';
+import CardContext from './cardContext';
 
 export { MoveTaskContext, CardContext };

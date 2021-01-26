@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react';
-import useMoveTask from '../hooks/moveTaskHook';
+import useMoveTask from '../hooks/useMoveTask';
 
 export default function Card(props) {
     const {
