@@ -7,11 +7,13 @@ const useMoveTask = () => {
     const cards = useContext(CardContext);
     const setCards = useContext(MoveTaskContext);
 
+    const copy = JSON.parse(JSON.stringify(cards));
+
     const moveTask = (id, action) => {
-        const [cardToMove] = cards.filter((c) => c.id === id);
+        const [cardToMove] = copy.filter((c) => c.id === id);
         const countCardsInColumn = (colId) => {
             let cardsInColumn = 0;
-            cards.forEach((card) => {
+            copy.forEach((card) => {
                 if (card.columnId === colId) {
                     cardsInColumn += 1;
                 }
@@ -65,15 +67,15 @@ const useMoveTask = () => {
         if (notFull && notEdge) {
             if (action === 'MOVE_RIGHT') {
                 cardToMove.columnId += 1;
-                setCards([...cards]); // to wdaje mi sie zbyt proste a dziala
+                setCards([...copy]);
             }
             if (action === 'MOVE_LEFT') {
                 cardToMove.columnId -= 1;
-                setCards([...cards]);
+                setCards([...copy]);
             }
         }
     };
-    return [moveTask, cards, setCards];
+    return [moveTask, copy, setCards];
 };
 
 export default useMoveTask;
