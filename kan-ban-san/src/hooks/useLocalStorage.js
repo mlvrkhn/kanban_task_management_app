@@ -1,34 +1,22 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-
 import { useState } from 'react';
-import columns from '../../data/columns';
-import { totalCardsInColumn } from '../helpers/handleCardHelper';
 
 const useLocalStorage = (key, initialValue = []) => {
     const [storedCards, setStoredCards] = useState(() => {
-        try {
+        // turn into if else statement later
+        if (localStorage.getItem(key)) {
             const item = localStorage.getItem(key);
-            return item ? JSON.parse(item) : initialValue;
-        } catch (error) {
-            console.error(error);
-            // return initialValue;
+            return JSON.parse(item);
         }
+        console.log('didnt find the key');
+        return initialValue;
     });
 
     const setValue = (cardsToSave) => {
-        try {
-            const totalCards = totalCardsInColumn(storedCards, 1);
-            if (totalCards < columns[0].cardLimit) {
-                setStoredCards(cardsToSave);
-                localStorage.setItem(key, JSON.stringify(cardsToSave));
-            } else {
-                console.log('column full');
-            }
-        } catch (error) {
-            console.log('card limit reached!');
-            console.error(error);
-        }
+        console.log('🚀 ~ setValue ~ cardsToSave', cardsToSave);
+        setStoredCards(cardsToSave);
+        localStorage.setItem(key, JSON.stringify(cardsToSave));
     };
 
     return [storedCards, setValue];

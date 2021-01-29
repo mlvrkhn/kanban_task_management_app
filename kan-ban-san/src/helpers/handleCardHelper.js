@@ -25,7 +25,7 @@ export const checkIfNotEdge = (columnId, action) => {
     return false;
 };
 
-export const isFreeSpaceInNextColumn = (columnId, action, cardList) => {
+export const isFreeSpaceInNextColumn = (columnId = 1, action, cardList) => {
     if (action === 'MOVE_RIGHT' && columnId < 4) {
         const nextColumnId = columnId + 1;
         const nextColumnLimit = columns[nextColumnId - 1].cardLimit;

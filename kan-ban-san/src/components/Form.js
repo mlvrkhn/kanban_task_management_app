@@ -3,17 +3,17 @@
 /* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable arrow-body-style */
+
 import React, { useState, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
-import MoveTaskContext from '../context/moveTaskContext';
-import CardContext from '../context/cardContext';
-import useLocalStorage from '../hooks/useLocalStorage';
-import columns from '../../data/columns';
+import Helpers from '../helpers/helpers';
+import { CardContext } from '../context';
 
 export default function Form() {
     const [cards, setCards] = useContext(CardContext);
+    const { isSpaceInColumn } = Helpers;
 
     const initialInputValues = () => {
         const initValues = {};
@@ -22,14 +22,12 @@ export default function Form() {
         });
         return initValues;
     };
-
     const [inputValue, setInputValue] = useState(initialInputValues);
 
     const createCardObject = () => {
         const getLastID = () => {
             return uuid();
         };
-
         return {
             name: inputValue.taskName,
             task: inputValue.taskDescription,
@@ -42,28 +40,13 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newCard = createCardObject();
 
-        const colLlimit = columns[0].cardLimit;
-        let nrOfCards = 0;
-
-        // use reduce
-        cards.forEach((card) => {
-            if (card.columnId === columns[0].id) {
-                nrOfCards += 1;
-            }
-        });
-
-        if (nrOfCards < colLlimit) {
-            console.log('setting');
-            setCards((c) => {
-                return [...c, newCard];
-            });
+        if (isSpaceInColumn(cards)) {
+            setCards([...cards, createCardObject()]);
         } else {
             console.log('LIMIT REACHED!');
         }
-
-        // clearInputFields();
+        clearInputFields();
     };
 
     const clearInputFields = () => {

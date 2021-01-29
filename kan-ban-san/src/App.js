@@ -6,21 +6,14 @@ import ReactDOM from 'react-dom';
 import Board from './components/Board';
 import { CardContext, MoveTaskContext } from './context';
 import useMoveTask from './hooks/useMoveTask';
-import useLocalStorage from './hooks/useLocalStorage';
 
 export default function App() {
-    const [cards, setCards] = useLocalStorage('cards');
-    const [moveTask] = useMoveTask();
+    const [moveTask, cards, setCards] = useMoveTask();
+    console.log('🚀 ~ App ~ cards', cards);
 
     useEffect(() => {
-        console.log(cards);
-        setCards(cards);
-    }, [cards]);
-
-    // useEffect(() => {
-    //     console.log('copyCards changed so Task is moved');
-    // }, [copyCards]);
-
+        setCards([...cards]);
+    }, []);
     return (
         <CardContext.Provider value={[cards, setCards]}>
             <MoveTaskContext.Provider value={moveTask}>
