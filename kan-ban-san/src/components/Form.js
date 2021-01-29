@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable arrow-body-style */
 import React, { useState, useContext } from 'react';
@@ -5,9 +8,12 @@ import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
 import MoveTaskContext from '../context/moveTaskContext';
+import CardContext from '../context/cardContext';
+import useLocalStorage from '../hooks/useLocalStorage';
+import columns from '../../data/columns';
 
 export default function Form() {
-    const setCards = useContext(MoveTaskContext);
+    const [cards, setCards] = useContext(CardContext);
 
     const initialInputValues = () => {
         const initValues = {};
@@ -38,8 +44,34 @@ export default function Form() {
         e.preventDefault();
         const newCard = createCardObject();
 
-        setCards((currCards) => {
-            return [...currCards, newCard];
+        const colLlimit = columns[0].cardLimit;
+        let nrOfCards = 0;
+
+        // use reduce
+        cards.forEach((card) => {
+            if (card.columnId === columns[0].id) {
+                nrOfCards += 1;
+            }
+        });
+
+        if (nrOfCards < colLlimit) {
+            console.log('setting');
+            setCards((c) => {
+                return [...c, newCard];
+            });
+        } else {
+            console.log('LIMIT REACHED!');
+        }
+
+        // clearInputFields();
+    };
+
+    const clearInputFields = () => {
+        setInputValue({
+            ...inputValue,
+            taskName: '',
+            taskOwner: '',
+            taskDescription: '',
         });
     };
 

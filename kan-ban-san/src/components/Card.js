@@ -1,15 +1,22 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-use-before-define */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+// import PropTypes, { useContext } from 'prop-types';
 import useMoveTask from '../hooks/useMoveTask';
+import { MoveTaskContext } from '../context';
 
 export default function Card(props) {
     const {
         data: { task, name, id, owner },
     } = props;
 
-    const [moveTask] = useMoveTask({});
+    // const [moveTask] = useMoveTask();
+
+    const moveTask = useContext(MoveTaskContext);
+    // console.log('🚀 ~ Card ~ moveTask', moveTask);
 
     const cardStyle = {
         width: '120px',
@@ -43,11 +50,11 @@ export default function Card(props) {
         </div>
     );
 }
-Card.propTypes = {
-    data: PropTypes.shape({
-        task: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-        owner: PropTypes.string.isRequired,
-    }),
-};
+// Card.propTypes = {
+//     data: PropTypes.shape({
+//         task: PropTypes.string.isRequired,
+//         name: PropTypes.string.isRequired,
+//         id: PropTypes.string.isRequired,
+//         owner: PropTypes.string.isRequired,
+//     }),
+// };

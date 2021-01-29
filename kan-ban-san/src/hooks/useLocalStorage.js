@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import columns from '../../data/columns';
-import countCardsInColumn from '../helpers/countCardsInColumn';
+import { totalCardsInColumn } from '../helpers/handleCardHelper';
 
 const useLocalStorage = (key, initialValue = []) => {
     const [storedCards, setStoredCards] = useState(() => {
@@ -12,18 +12,21 @@ const useLocalStorage = (key, initialValue = []) => {
             return item ? JSON.parse(item) : initialValue;
         } catch (error) {
             console.error(error);
-            return initialValue;
+            // return initialValue;
         }
     });
 
     const setValue = (cardsToSave) => {
         try {
-            const totalCards = countCardsInColumn(storedCards, 1);
-            if (columns[0].cardLimit >= totalCards + 1) {
+            const totalCards = totalCardsInColumn(storedCards, 1);
+            if (totalCards < columns[0].cardLimit) {
                 setStoredCards(cardsToSave);
                 localStorage.setItem(key, JSON.stringify(cardsToSave));
+            } else {
+                console.log('column full');
             }
         } catch (error) {
+            console.log('card limit reached!');
             console.error(error);
         }
     };
@@ -32,3 +35,15 @@ const useLocalStorage = (key, initialValue = []) => {
 };
 
 export default useLocalStorage;
+
+// const StateUpdateHelper = {
+//     updateStates: (updatedTasks, setDistribution) => {
+//         setDistribution(updatedTasks);
+//     },
+//     updateTasksInColumn: (newTask, targetColumnId, tasksDistribution) => {
+//         return {
+//             ...tasksDistribution,
+//             [targetColumnId]: [...tasksDistribution[targetColumnId], newTask],
+//         };
+//     },
+// };

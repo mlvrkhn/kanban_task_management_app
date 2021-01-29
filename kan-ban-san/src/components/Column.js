@@ -15,8 +15,8 @@ export default function Column(props) {
         const { Consumer: CardConsumer } = CardContext;
         return (
             <CardConsumer>
-                {(context) => {
-                    if (Object.keys(context).length !== 0) {
+                {([context]) => {
+                    if (context.length !== 0) {
                         return context
                             .filter((card) => card.columnId === id)
                             .map((card) => <Card key={card.id} data={card} />);
