@@ -8,7 +8,7 @@ import Column from './Column';
 import columns from '../../data/columns';
 
 export default function Board() {
-    const renderColumns = columns.map((col) => <Column key={col.id} data={col} />);
+    const renderColumns = columns.map((col) => <Column key={col.id} columnData={col} />);
 
     return (
         <article className="board-container container" style={boardStyle}>

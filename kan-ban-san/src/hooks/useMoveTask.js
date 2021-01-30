@@ -1,35 +1,36 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 // eslint-disable-next-line no-unused-vars
-import { useContext } from 'react';
-import { checkIfNotEdge, isFreeSpaceInNextColumn } from '../helpers/handleCardHelper';
-import { CardContext, MoveTaskContext } from '../context';
+
 import useLocalStorage from './useLocalStorage';
+import Helpers from '../helpers/helpers';
+import columns from '../../data/columns';
 
 const useMoveTask = () => {
-    // const [cards, setCar] = useLocalStorage('cards');
-    // const cardsCopy = JSON.parse(JSON.stringify(getter));
-    // const [cards, setCards] = useContext(CardContext);
     const [tasks, setTasks] = useLocalStorage('cards');
+    const cards = JSON.parse(JSON.stringify(tasks));
 
-    const moveTask = (id, action) => {
-        const [cardToMove] = tasks.filter((c) => c.id === id);
+    const { isSpaceInColumn, isNotEdgeCol } = Helpers;
 
-        const { columnId } = cardToMove;
-        const notEdge = checkIfNotEdge(columnId, action);
-        const notFull = isFreeSpaceInNextColumn(columnId, action, tasks);
+    const moveTask = (cardID, direction) => {
+        const [cardToMove] = cards.filter((c) => c.id === cardID);
+        const nextColumnId = direction === 'left' ? cardToMove.columnId - 1 : cardToMove.columnId + 1;
 
-        // if (notFull && notEdge) {
-        //     if (action === 'MOVE_RIGHT') {
-        //         cardToMove.columnId += 1;
-        //         console.log('move right');
-        //         setCards([...cards]);
-        //     }
-        //     if (action === 'MOVE_LEFT') {
-        //         cardToMove.columnId -= 1;
-        //         setCards([...cards]);
-        //     }
-        // }
+        if (nextColumnId >= 0 && nextColumnId < columns.length) {
+            if (isSpaceInColumn(cards, nextColumnId)) {
+                if (isNotEdgeCol(direction, nextColumnId)) {
+                    const rootCards = cards.filter((card) => card.id !== cardToMove.id);
+                    cardToMove.columnId = nextColumnId;
+                    setTasks([...rootCards, cardToMove]);
+                } else {
+                    console.log('edge!');
+                }
+            } else {
+                console.log('LIMIT');
+            }
+        } else {
+            console.log('You are moving off the edge!');
+        }
     };
     return [moveTask, tasks, setTasks];
 };

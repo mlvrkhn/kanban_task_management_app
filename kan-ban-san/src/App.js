@@ -9,11 +9,10 @@ import useMoveTask from './hooks/useMoveTask';
 
 export default function App() {
     const [moveTask, cards, setCards] = useMoveTask();
-    console.log('🚀 ~ App ~ cards', cards);
-
     useEffect(() => {
         setCards([...cards]);
     }, []);
+
     return (
         <CardContext.Provider value={[cards, setCards]}>
             <MoveTaskContext.Provider value={moveTask}>

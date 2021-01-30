@@ -8,7 +8,7 @@ import { CardContext } from '../context';
 
 export default function Column(props) {
     const {
-        data: { title, id, cardLimit, color },
+        columnData: { title, id, cardLimit, color },
     } = props;
 
     function renderCards() {
@@ -54,7 +54,7 @@ export default function Column(props) {
 }
 
 Column.propTypes = {
-    data: PropTypes.shape({
+    columnData: PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         cardLimit: PropTypes.number.isRequired,

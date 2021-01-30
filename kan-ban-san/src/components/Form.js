@@ -22,6 +22,7 @@ export default function Form() {
         });
         return initValues;
     };
+
     const [inputValue, setInputValue] = useState(initialInputValues);
 
     const createCardObject = () => {
@@ -32,7 +33,7 @@ export default function Form() {
             name: inputValue.taskName,
             task: inputValue.taskDescription,
             owner: inputValue.taskOwner,
-            columnId: 1,
+            columnId: 0,
             color: '#ffc8dd',
             id: getLastID(),
         };
