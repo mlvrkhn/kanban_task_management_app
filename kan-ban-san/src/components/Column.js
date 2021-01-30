@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable consistent-return */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 import { CardContext } from '../context';
@@ -10,21 +10,25 @@ export default function Column(props) {
     const {
         columnData: { title, id, cardLimit, color },
     } = props;
+    const [cardList] = useContext(CardContext);
 
-    function renderCards() {
-        const { Consumer: CardConsumer } = CardContext;
-        return (
-            <CardConsumer>
-                {([context]) => {
-                    if (context.length !== 0) {
-                        return context
-                            .filter((card) => card.columnId === id)
-                            .map((card) => <Card key={card.id} data={card} />);
-                    }
-                }}
-            </CardConsumer>
-        );
-    }
+    const renderCards = () =>
+        cardList.map((card) => {
+            if (card.columnId === id) {
+                return <Card key={card.id} data={card} />;
+            }
+        });
+
+    const isColumnFull = () => {
+        let occurences = 0;
+        cardList.forEach((card) => {
+            if (card.columnId === id) {
+                occurences += 1;
+            }
+        });
+        return occurences === cardLimit;
+    };
+    console.log('🚀 ~ isColumnFull ~ isColumnFull', isColumnFull);
 
     const columnStyle = {
         backgroundColor: color,
@@ -47,7 +51,7 @@ export default function Column(props) {
     return (
         <div className="column-container container" style={columnStyle}>
             <h1 style={columnTitleStyle}>{title}</h1>
-            <p>Limit: {cardLimit}</p>
+            <p>{isColumnFull() ? 'LIMIT REACHED!' : `Limit: ${cardLimit}`}</p>
             {renderCards()}
         </div>
     );
