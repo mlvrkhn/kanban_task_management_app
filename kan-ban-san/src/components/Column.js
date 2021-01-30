@@ -8,14 +8,14 @@ import { CardContext } from '../context';
 
 export default function Column(props) {
     const {
-        columnData: { title, id, cardLimit, color, isEdgeColumn },
+        columnData: { title, id, cardLimit, color },
     } = props;
     const [cardList] = useContext(CardContext);
 
     const renderCards = () =>
         cardList.map((card) => {
             if (card.columnId === id) {
-                return <Card key={card.id} data={card} isEdge={isEdgeColumn} />;
+                return <Card key={card.id} data={card} />;
             }
         });
 

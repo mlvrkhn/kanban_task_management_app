@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
@@ -5,21 +7,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import columns from '../../data/columns';
 
 export default function Card(props) {
     const {
-        data: { task, name, id, owner },
+        data: { task, name, id, owner, columnId },
     } = props;
 
-    const renderNavigationButtons = () => {
+    const renderLeftButton = () => <Button cardId={id} direction="left" />;
+    const renderRightButton = () => <Button cardId={id} direction="right" />;
+    const renderLeftAndRightButton = () => {
         return (
-            <div>
+            <>
                 <Button cardId={id} direction="left" />
                 <Button cardId={id} direction="right" />
-            </div>
+            </>
         );
     };
 
+    const renderNavigationButtons = () => {
+        const lastColumnId = columns.length - 1;
+        const firstColumnId = columns[0].id;
+
+        return columnId === firstColumnId
+            ? renderRightButton()
+            : columnId === lastColumnId
+            ? renderLeftButton()
+            : renderLeftAndRightButton();
+    };
     return (
         <div style={cardStyle} key={id}>
             <h3>{name}</h3>
