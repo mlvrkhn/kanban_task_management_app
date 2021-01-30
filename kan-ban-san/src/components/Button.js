@@ -8,6 +8,7 @@ import { MoveTaskContext } from '../context';
 export default function Button(props) {
     const { direction, cardId } = props;
     const moveTask = useContext(MoveTaskContext);
+
     return (
         <button style={btnStyle} type="button" onClick={() => moveTask(cardId, direction)}>
             {direction === 'left' ? '👈' : '👉'}
@@ -18,10 +19,9 @@ const btnStyle = {
     margin: '0 2px',
     borderRadius: '3px',
     backgroundColor: '#404e4d',
-    fontSize: '12px',
+    fontSize: '14px',
     border: 'none',
 };
-
 Button.propTypes = {
     direction: PropTypes.string,
     cardId: PropTypes.string,

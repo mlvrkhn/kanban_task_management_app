@@ -8,14 +8,14 @@ import { CardContext } from '../context';
 
 export default function Column(props) {
     const {
-        columnData: { title, id, cardLimit, color },
+        columnData: { title, id, cardLimit, color, isEdgeColumn },
     } = props;
     const [cardList] = useContext(CardContext);
 
     const renderCards = () =>
         cardList.map((card) => {
             if (card.columnId === id) {
-                return <Card key={card.id} data={card} />;
+                return <Card key={card.id} data={card} isEdge={isEdgeColumn} />;
             }
         });
 
@@ -50,7 +50,8 @@ export default function Column(props) {
     };
     const limitInfoStyle = {
         backgroundColor: 'red',
-        width: '60%',
+        width: '50%',
+        padding: '3px',
         borderRadius: '5px',
         marginBottom: '5px',
     };

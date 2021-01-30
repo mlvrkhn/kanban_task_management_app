@@ -8,7 +8,6 @@ const useLocalStorage = (key, initialValue = []) => {
             const item = localStorage.getItem(key);
             return JSON.parse(item);
         }
-        console.log('didnt find the key');
         return initialValue;
     });
 

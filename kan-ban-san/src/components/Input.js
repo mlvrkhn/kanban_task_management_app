@@ -36,3 +36,6 @@ Input.propTypes = {
 Input.defaultProps = {
     inputValue: PropTypes.object.isRequired,
 };
+
+// add labels
+// try useRef to hide the buttons

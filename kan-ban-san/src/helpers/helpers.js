@@ -1,7 +1,4 @@
-// import  from 'react';
 /* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable arrow-body-style */
 
@@ -18,6 +15,9 @@ const Helpers = {
             return nextColumnId >= 0;
         }
         return nextColumnId <= columns.length;
+    },
+    targetColumnExisis: (nextColumnId) => {
+        return nextColumnId >= 0 && nextColumnId < columns.length;
     },
 };
 
