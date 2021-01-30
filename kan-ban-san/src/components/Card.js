@@ -1,11 +1,8 @@
 /* eslint-disable arrow-body-style */
-/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/require-default-props */
 /* eslint-disable no-use-before-define */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
@@ -16,10 +13,10 @@ export default function Card(props) {
 
     const renderNavigationButtons = () => {
         return (
-            <>
+            <div>
                 <Button cardId={id} direction="left" />
                 <Button cardId={id} direction="right" />
-            </>
+            </div>
         );
     };
 
@@ -52,4 +49,7 @@ Card.propTypes = {
         id: PropTypes.string.isRequired,
         owner: PropTypes.string.isRequired,
     }),
+};
+Card.defaultProps = {
+    data: PropTypes.object.isRequired,
 };

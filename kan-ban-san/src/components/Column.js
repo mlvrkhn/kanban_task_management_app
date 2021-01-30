@@ -1,4 +1,4 @@
-/* eslint-disable react/require-default-props */
+/* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 
 import React, { useContext } from 'react';
@@ -28,7 +28,6 @@ export default function Column(props) {
         });
         return occurences === cardLimit;
     };
-    console.log('🚀 ~ isColumnFull ~ isColumnFull', isColumnFull);
 
     const columnStyle = {
         backgroundColor: color,
@@ -65,4 +64,7 @@ Column.propTypes = {
         color: PropTypes.string.isRequired,
         isEdgeColumn: PropTypes.bool.isRequired,
     }),
+};
+Column.defaultProps = {
+    columnData: PropTypes.object.isRequired,
 };

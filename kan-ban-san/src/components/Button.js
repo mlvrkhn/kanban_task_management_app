@@ -1,6 +1,8 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
+
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import { MoveTaskContext } from '../context';
 
 export default function Button(props) {
@@ -18,4 +20,13 @@ const btnStyle = {
     backgroundColor: '#404e4d',
     fontSize: '12px',
     border: 'none',
+};
+
+Button.propTypes = {
+    direction: PropTypes.string,
+    cardId: PropTypes.string,
+};
+Button.defaultProps = {
+    direction: 'left',
+    cardId: 0,
 };

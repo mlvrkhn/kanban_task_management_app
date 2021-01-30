@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-// eslint-disable-next-line no-unused-vars
 
 import useLocalStorage from './useLocalStorage';
 import Helpers from '../helpers/helpers';

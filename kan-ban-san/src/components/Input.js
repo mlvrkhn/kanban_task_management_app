@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
-/* eslint-disable react/prop-types */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Input(props) {
     const { name, required, changeHandler, placeholder, inputValue } = props;
@@ -22,5 +22,17 @@ const inputStyle = {
     height: '30px',
     fontSize: '20px',
 };
-
-// add label for input
+Input.propTypes = {
+    name: PropTypes.string.isRequired,
+    required: PropTypes.bool.isRequired,
+    changeHandler: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    inputValue: PropTypes.shape({
+        taskName: PropTypes.string.isRequired,
+        taskOwner: PropTypes.string.isRequired,
+        taskDescription: PropTypes.string.isRequired,
+    }),
+};
+Input.defaultProps = {
+    inputValue: PropTypes.object.isRequired,
+};
