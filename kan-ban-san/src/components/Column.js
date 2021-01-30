@@ -38,6 +38,8 @@ export default function Column(props) {
         textAlign: 'center',
         borderRadius: '5px',
         alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
     };
     const columnTitleStyle = {
         fontSize: '30px',
@@ -46,11 +48,19 @@ export default function Column(props) {
         padding: '10px',
         lineHeight: '40px',
     };
+    const limitInfoStyle = {
+        backgroundColor: 'red',
+        width: '60%',
+        borderRadius: '5px',
+        marginBottom: '5px',
+    };
+
+    const limitInfo = 'Limit reached';
 
     return (
         <div className="column-container container" style={columnStyle}>
             <h1 style={columnTitleStyle}>{title}</h1>
-            <p>{isColumnFull() ? 'LIMIT REACHED!' : `Limit: ${cardLimit}`}</p>
+            {isColumnFull() ? <div style={limitInfoStyle}>{limitInfo}</div> : <div>{`Limit: ${cardLimit}`}</div>}
             {renderCards()}
         </div>
     );
