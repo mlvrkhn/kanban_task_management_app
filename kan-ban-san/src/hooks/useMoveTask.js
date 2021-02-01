@@ -1,13 +1,11 @@
 /* eslint-disable no-console */
 
 import useLocalStorage from './useLocalStorage';
-import Helpers from '../helpers/helpers';
+import { isSpaceInColumn, isNotEdgeCol, targetColumnExisis } from '../helpers/helpers';
 
 const useMoveTask = () => {
     const [tasks, setTasks] = useLocalStorage('cards');
     const cards = JSON.parse(JSON.stringify(tasks));
-
-    const { isSpaceInColumn, isNotEdgeCol, targetColumnExisis } = Helpers;
 
     const moveTask = (cardID, direction) => {
         const [cardToMove] = cards.filter((c) => c.id === cardID);

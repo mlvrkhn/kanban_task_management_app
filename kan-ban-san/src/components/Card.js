@@ -14,13 +14,13 @@ export default function Card(props) {
         data: { task, name, id, owner, columnId },
     } = props;
 
-    const renderLeftButton = () => <Button cardId={id} direction="left" />;
-    const renderRightButton = () => <Button cardId={id} direction="right" />;
+    const leftButton = <Button cardId={id} direction="left" />;
+    const rightButton = <Button cardId={id} direction="right" />;
     const renderLeftAndRightButton = () => {
         return (
             <>
-                <Button cardId={id} direction="left" />
-                <Button cardId={id} direction="right" />
+                {leftButton}
+                {rightButton}
             </>
         );
     };
@@ -30,9 +30,9 @@ export default function Card(props) {
         const firstColumnId = columns[0].id;
 
         return columnId === firstColumnId
-            ? renderRightButton()
+            ? rightButton
             : columnId === lastColumnId
-            ? renderLeftButton()
+            ? leftButton
             : renderLeftAndRightButton();
     };
     return (

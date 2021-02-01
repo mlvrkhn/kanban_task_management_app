@@ -43,7 +43,6 @@ export default function Column(props) {
     };
     const columnTitleStyle = {
         fontSize: '30px',
-        borderBottom: '4px solid black',
         alignItems: 'center',
         padding: '10px',
         lineHeight: '40px',

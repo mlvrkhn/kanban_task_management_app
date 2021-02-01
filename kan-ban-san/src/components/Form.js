@@ -1,6 +1,4 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 /* eslint-disable arrow-body-style */
 
@@ -8,12 +6,11 @@ import React, { useState, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Input from './Input';
 import inputFields from '../../data/inputFields';
-import Helpers from '../helpers/helpers';
+import { isSpaceInColumn } from '../helpers/helpers';
 import { CardContext } from '../context';
 
 export default function Form() {
     const [cards, setCards] = useContext(CardContext);
-    const { isSpaceInColumn } = Helpers;
 
     const initialInputValues = () => {
         const initValues = {};
@@ -45,7 +42,7 @@ export default function Form() {
         if (isSpaceInColumn(cards)) {
             setCards([...cards, createCardObject()]);
         } else {
-            console.log('LIMIT REACHED!');
+            console.error('LIMIT REACHED!');
         }
         clearInputFields();
     };

@@ -4,21 +4,17 @@
 
 import columns from '../../data/columns';
 
-const Helpers = {
-    isSpaceInColumn: (storageCards, colId = 0) => {
-        const nrCardsInCol = storageCards.filter((c) => c.columnId === colId);
-        return nrCardsInCol.length < columns[colId].cardLimit;
-    },
-
-    isNotEdgeCol: (direction, nextColumnId) => {
-        if (direction === 'left') {
-            return nextColumnId >= 0;
-        }
-        return nextColumnId <= columns.length;
-    },
-    targetColumnExisis: (nextColumnId) => {
-        return nextColumnId >= 0 && nextColumnId < columns.length;
-    },
+export const isSpaceInColumn = (storageCards, colId = 0) => {
+    const nrCardsInCol = storageCards.filter((c) => c.columnId === colId);
+    return nrCardsInCol.length < columns[colId].cardLimit;
 };
 
-export default Helpers;
+export const isNotEdgeCol = (direction, nextColumnId) => {
+    if (direction === 'left') {
+        return nextColumnId >= 0;
+    }
+    return nextColumnId <= columns.length;
+};
+export const targetColumnExisis = (nextColumnId) => {
+    return nextColumnId >= 0 && nextColumnId < columns.length;
+};
