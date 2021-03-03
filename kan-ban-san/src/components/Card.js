@@ -48,7 +48,7 @@ export default function Card(props) {
 const cardStyle = {
     width: '120px',
     height: '120px',
-    backgroundColor: `#fb6376`,
+    backgroundColor: `#F4989C`,
     display: 'inline-block',
     padding: '3px',
     margin: '4px',

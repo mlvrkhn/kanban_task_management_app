@@ -20,6 +20,7 @@ const btnStyle = {
     borderRadius: '3px',
     backgroundColor: '#404e4d',
     fontSize: '14px',
+    color: '#343F3E',
     border: 'none',
 };
 Button.propTypes = {

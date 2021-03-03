@@ -91,7 +91,7 @@ export default function Form() {
 const submitBtnStyle = {
     width: '200px',
     height: '108px',
-    backgroundColor: '#fb6376',
+    backgroundColor: '#F4989C',
     fontSize: '25px',
     borderRadius: '3px',
     border: 'none',

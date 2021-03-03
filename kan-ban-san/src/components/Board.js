@@ -21,11 +21,11 @@ export default function Board() {
 }
 
 const headerStyle = {
-    color: '#fb6376',
+    color: '#343F3E',
     fontSize: '35px',
 };
 const boardStyle = {
-    backgroundColor: '#404e4d',
+    backgroundColor: '#DCEDFF',
     width: '700px',
     minHeight: '500px',
     padding: '20px',
@@ -33,5 +33,5 @@ const boardStyle = {
 };
 const addCardStyle = {
     fontSize: '20px',
-    color: '#fb6376',
+    color: '#343F3E',
 };

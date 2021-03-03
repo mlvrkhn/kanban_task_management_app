@@ -48,7 +48,7 @@ export default function Column(props) {
         lineHeight: '40px',
     };
     const limitInfoStyle = {
-        backgroundColor: 'red',
+        backgroundColor: '#94B0DA',
         width: '50%',
         padding: '3px',
         borderRadius: '5px',
