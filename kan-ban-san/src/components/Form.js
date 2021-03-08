@@ -89,13 +89,13 @@ export default function Form() {
     );
 }
 const submitBtnStyle = {
-    width: '200px',
-    height: '108px',
+    width: '205px',
+    height: '118px',
     backgroundColor: '#F4989C',
     fontSize: '25px',
     borderRadius: '3px',
     border: 'none',
-    margin: '0 10px',
+    margin: '0 5px',
 };
 const formStyle = {
     display: 'flex',

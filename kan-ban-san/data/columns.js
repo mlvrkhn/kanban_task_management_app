@@ -7,7 +7,7 @@ const columns = [
         color: '#B9CDDA',
     },
     {
-        title: 'In progress',
+        title: 'Going',
         id: 1,
         cardLimit: 2,
         color: '#B9CDDA',

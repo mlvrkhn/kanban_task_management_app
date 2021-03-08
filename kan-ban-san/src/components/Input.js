@@ -18,9 +18,10 @@ export default function Input(props) {
     );
 }
 const inputStyle = {
-    width: '100%',
+    width: '99%',
     height: '30px',
     fontSize: '20px',
+    margin: '2px 0',
 };
 Input.propTypes = {
     name: PropTypes.string.isRequired,

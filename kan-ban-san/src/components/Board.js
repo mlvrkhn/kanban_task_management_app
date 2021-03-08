@@ -25,11 +25,11 @@ const headerStyle = {
     fontSize: '35px',
 };
 const boardStyle = {
-    backgroundColor: '#DCEDFF',
-    width: '700px',
+    position: 'relative',
     minHeight: '500px',
     padding: '20px',
     borderRadius: '3px',
+    width: '650px',
 };
 const addCardStyle = {
     fontSize: '20px',
