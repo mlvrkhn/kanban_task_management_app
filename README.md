@@ -1,5 +1,7 @@
 # Kanban - japanese task management tool
-<img src="./public/../kan-ban-san/public/screenshoot.png" alt="screenshoot" width="550px"/>  
+[Try it out!](https://mlvrkhn.github.io/kanban_task_management_app/)
+ 
+<img src="./kan-ban-san/public/Screenshot.png" alt="screenshoot"/>  
 
 ## Project description
 
@@ -24,5 +26,8 @@ With the useage of modern React tools like hooks (useContext, useRef, useState) 
 - create custom hook that handles communication between the App and Local Storage
 
 ## Code samples  
-<img src="./public/../kan-ban-san/public/hooks-ls.png" alt="localStorage" width="550px"/>
-<img src="./public/../kan-ban-san/public/hooks-movetask.png" alt="moveTask" width="550px"/>  
+### Local Storage Hooks
+<img src="./kan-ban-san/public/hooks-ls.png" alt="localStorage"/>  
+
+### Move Task Hook
+<img src="./kan-ban-san/public/hooks-movetask.png" alt="moveTask"/>  
